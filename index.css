@@ -321,6 +321,9 @@ button.new-game {
   .game-info {
     font-size: 1rem;
   }
+  .game-status{
+    margin-bottom: 0;
+  }
 
   .alphabet-keyboard {
     width: 100%;
@@ -330,6 +333,7 @@ button.new-game {
   }
   .language-list{
     margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .alphabet-letter {
@@ -339,7 +343,7 @@ button.new-game {
   }
 
   .word {
-    margin-top: 50px;
+    margin-top: 30px;
     height: 20px;
     gap: 2px;
   }
