@@ -3,11 +3,13 @@ import { languages } from "./components/languages";
 import React from "react";
 import clsx from "clsx";
 import { chooseRandomWord, getFarewellText } from "./components/utils";
-import Confetti from "react-confetti"
+import Confetti from "react-confetti";
 
 export default function App() {
   //word to guess
-  const [word, setWord] = React.useState(() =>chooseRandomWord().toUpperCase());
+  const [word, setWord] = React.useState(() =>
+    chooseRandomWord().toUpperCase()
+  );
   //guessed letters
   const [guessedLetters, setGuessedLetters] = React.useState([]);
   //wrong answers
@@ -17,7 +19,6 @@ export default function App() {
   let wrongGuesses = guessedLetters.filter(
     (letter) => !word.includes(letter)
   ).length;
-  console.log(word)
 
   let isGameWon = word
     .split("")
@@ -60,7 +61,6 @@ export default function App() {
     );
   });
 
-
   //KEYBOARD INPUTS
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -86,9 +86,6 @@ export default function App() {
         </button>
       );
     });
-
-  console.log(wrongGuesses);
-  console.log(languageElements[0].key);
 
   function guessLetter(letter) {
     if (!word.includes(letter)) {
@@ -120,7 +117,7 @@ export default function App() {
     if (!word.includes(wrongLetter)) {
       return (
         <section className="game-status farewell">
-          <p>{getFarewellText(languageElements[0].key)} 🖖</p>
+          <p>{getFarewellText(languageElements[wrongGuesses - 1].key)} 🖖</p>
         </section>
       );
     }
@@ -139,8 +136,6 @@ export default function App() {
     setGuessedLetters([]); // Clear guessed letters
     setWrongLetter(""); // Reset the last wrong letter
   }
-
-
 
   return (
     <>
@@ -176,7 +171,11 @@ export default function App() {
       </section>
 
       <section className="alphabet-keyboard">{keyboard}</section>
-      {isGameDone && <button onClick={resetGame} className="new-game">New Game</button>}
+      {isGameDone && (
+        <button onClick={resetGame} className="new-game">
+          New Game
+        </button>
+      )}
     </>
   );
 }
